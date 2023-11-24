@@ -106,6 +106,56 @@ document.querySelector('.slider').addEventListener('pointermove', (e) => {
     }
 });
 
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var fx = function () {
+      var elements = document.querySelectorAll('.number');
+      console.log(elements)
+      elements.forEach(function (el) {
+          var data = parseInt(el.dataset.n, 10);
+          var props = {
+              count: 0
+          };
+
+          var animate = function () {
+              props.count += data / 100; // Assuming 100 steps for simplicity
+              el.textContent = Math.ceil(props.count);
+
+              if (props.count < data) {
+                  requestAnimationFrame(animate);
+              } else {
+                  if (el.dataset.sym !== undefined) {
+                      el.textContent = el.textContent.concat(el.dataset.sym);
+                  }
+              }
+          };
+
+          animate();
+      });
+  };
+
+  var isElementInViewport = function (el) {
+      var rect = el.getBoundingClientRect();
+      return (
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.bottom >= 0
+      );
+  };
+
+  var handleScroll = function () {
+      var elements = document.querySelectorAll('.number');
+      elements.forEach(function (el) {
+          if (isElementInViewport(el) && !el.dataset.animated) {
+              fx();
+              el.dataset.animated = true; // Mark the element as animated to avoid redundant animations
+          }
+      });
+  };
+
+  window.addEventListener('scroll', handleScroll);
+});
 // var count = 1;
 // var customChange = false
 
@@ -424,3 +474,10 @@ window.addEventListener("resize", function() {
   cardWidth = document.querySelector('.card-1').offsetWidth + 20; // Include margin
   updateCardPosition();
 });
+
+
+
+
+
+
+//funfact-number animation

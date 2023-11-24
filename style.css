@@ -1423,6 +1423,243 @@ body{
 
 
 
+.funfact-section{
+    background-image: url(./images/divider-bg3.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-block: 5%;
+}
+
+.funfact-container{
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 1320px;
+    margin-inline: auto;
 
 
+}
+
+@media (max-width:1200px){
+    .funfact-container{
+        grid-template-columns: auto auto;
+        row-gap: 50px;
+    }
+}
+@media (max-width:800px){
+    .funfact-container{
+        grid-template-columns: auto;
+        row-gap: 10px;
+        max-width: 90%;
+        justify-content: initial;
+
+    }
+}
+.funfact-item{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    
+    
+}
+.funfact-inner{
+    margin-left: 20px;
+}
+
+.funfact-item img{
+    width: 62px;
+}
+
+.number{
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 54px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.tagline{
+    margin: 0;
+}
+
+
+@media (max-width:500px){
+    .funfact-container{
+       justify-content: center; 
+    }
+    .funfact-item{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
   
+}
+
+
+.testimonial-container {
+    position: relative;
+    text-align: center;
+    padding-block:100px;
+    background-image: url(./images/abt-bg.png);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+    background-color: #f1f3f8;;
+}
+
+.testimonial-container>p {
+    background-color: #75151b;
+    color: white;
+    width: 200px;
+    margin: auto;
+    padding: 10px;
+    font-size: x-large;
+    border-radius: 50px
+}
+
+.testimonial-container>h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+.testimonial-item-container{
+    max-width: 1320px;
+    margin-inline: auto;
+    display: flex;
+    
+    
+}
+
+.testimonial-item{
+    position: relative;
+    background-color: white;
+    /* flex: 0 0 auto; */
+    /* flex: 1; */
+    width: 33.33333333%;
+    height: auto;
+    padding: 10px;
+    margin-inline: 10px;
+
+}
+.testimonial-item p{
+    color: #515264;
+    font-style: italic;
+    line-height: 1.8em;
+    
+    margin-bottom: 50px;
+}
+.testimonial-item img{
+    position: absolute;
+    opacity: 0.1;
+    width: 150px;
+    top: -18px;
+}
+.testimonial-item:after {
+    content: "";
+    width: 30%;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+    opacity: 0.3;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    background: #75151b;
+}
+.testimonial-item:hover:after {
+    opacity: 1;
+    width: 100%;
+}
+@media (max-width:1200px){
+    .testimonial-item-container{
+        flex-wrap: wrap;
+        width: 90%;
+        justify-content: center;
+        row-gap: 50px;
+        /* justify-content: center; */
+    }
+    .testimonial-item{
+        width: 40%;
+        /* margin-top: ; */
+    }
+}
+@media (max-width:956px) {
+    .testimonial-item{
+    width: 80%;
+    }
+}
+@media (max-width:500px) {
+    .testimonial-item{
+    width: 90%;
+    }
+    .testimonial-item img{
+        right: 40px;
+    }
+
+}
+
+/* news section */
+.news-section{
+    background-image: url(./images/news-bg-2.png);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    padding-block: 100px;
+}
+
+.news-container{
+    max-width: 1320px;
+    margin-inline: auto;
+    display: flex;
+    
+    
+}
+
+.news-headings{
+    position: relative;
+    width: 50%;
+
+}
+
+.news-headings >h2{
+    margin: 0;
+}
+.news-headings h4{
+    margin-top: 0;
+    padding-inline: 70px;
+    padding-top: 20px;
+}
+
+.news-headings h1{
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+.news-headings span{
+    color: #75151b;
+}
+
+.news-headings p{
+    line-height: 1.8em;
+    color:#515264; ;
+}
+.news-btn{
+    position: relative;
+    flex: 1;
+}
+.news-btn a{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.news-btn button {
+    display: flex;
+    align-items: center;
+    padding: 10px 50px;
+}
