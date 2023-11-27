@@ -28,86 +28,154 @@ function dropdown(){
     }
 }
 
-var count = 1;
-var customChange = false;
-var isDragging = false;
-var startX = 0;
+// var count = 1;
+// var customChange = false;
+// var isDragging = false;
+// var startX = 0;
 
-const sliding = (x) => {
-    var left = `${-x * 100}vw`;
-    var allSlide = document.querySelector('.slider').querySelectorAll('.card');
+// const sliding = (x) => {
+//     var left = `${-x * 100}vw`;
+//     var allSlide = document.querySelector('.slider').querySelectorAll('.card');
 
-    allSlide.forEach((ele) => {
-        ele.style.left = left;
-    });
-};
+//     allSlide.forEach((ele) => {
+//         ele.style.left = left;
+//     });
+// };
 
-setInterval(() => {
-    if (!customChange && !isDragging) {
-        count = (count + 1) % 3;
-        sliding(count);
-        console.log(count);
+// setInterval(() => {
+//     if (!customChange && !isDragging) {
+//         count = (count + 1) % 3;
+//         sliding(count);
+//         console.log(count);
+//     }
+// }, 3000);
+
+// const leftSwipe = () => {
+//     if (!customChange) {
+//         customChange = true;
+//         setTimeout(() => (customChange = false), 2000);
+//         count = count === 0 ? 2 : count - 1;
+//         sliding(count);
+//         console.log(count);
+//     }
+// };
+
+// const rightSwipe = () => {
+//     if (!customChange) {
+//         customChange = true;
+//         setTimeout(() => (customChange = false), 2000);
+//         count = (count + 1) % 3;
+//         sliding(count);
+//         console.log(count);
+//     }
+// };
+
+// document.querySelector('.left').addEventListener('click', leftSwipe);
+// document.querySelector('.right').addEventListener('click', rightSwipe);
+
+// document.querySelector('.slider').addEventListener('pointerdown', (e) => {
+//     isDragging = true;
+//     startX = e.clientX;
+// });
+
+// document.querySelector('.slider').addEventListener('pointerup', (e) => {
+//     if (isDragging) {
+//         var endX = e.clientX;
+//         var deltaX = endX - startX;
+
+//         if (deltaX > 0) {
+//             leftSwipe();
+//         } else {
+//             rightSwipe();
+//         }
+
+//         isDragging = false;
+//     }
+// });
+
+// document.querySelector('.slider').addEventListener('pointerleave', () => {
+//     if (isDragging) {
+//         rightSwipe();
+//         isDragging = false;
+//     }
+// });
+
+// document.querySelector('.slider').addEventListener('pointermove', (e) => {
+//     if (isDragging) {
+//         e.preventDefault();
+//     }
+// });
+
+
+const swiper = new Swiper('.soln-carousel', {
+  // Optional parameters
+  // direction: '',
+  slidesPerView: 4,
+  loop: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints:{
+    250: {
+      slidesPerView: 1,
+      spaceBetween:20,
+    },
+    500: {
+      slidesPerView: 2,
+      spaceBetween:20,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween:20,
+    },
+    768:{
+      slidesPerView: 3,
+      spaceBetween:20,
+    },
+    1024:{
+      slidesPerView: 4,
+      spaceBetween:20,
     }
-}, 3000);
+  },
 
-const leftSwipe = () => {
-    if (!customChange) {
-        customChange = true;
-        setTimeout(() => (customChange = false), 2000);
-        count = count === 0 ? 2 : count - 1;
-        sliding(count);
-        console.log(count);
-    }
-};
-
-const rightSwipe = () => {
-    if (!customChange) {
-        customChange = true;
-        setTimeout(() => (customChange = false), 2000);
-        count = (count + 1) % 3;
-        sliding(count);
-        console.log(count);
-    }
-};
-
-document.querySelector('.left').addEventListener('click', leftSwipe);
-document.querySelector('.right').addEventListener('click', rightSwipe);
-
-document.querySelector('.slider').addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
 });
+// const swiper = document.querySelector('.swiper').swiper;
 
-document.querySelector('.slider').addEventListener('pointerup', (e) => {
-    if (isDragging) {
-        var endX = e.clientX;
-        var deltaX = endX - startX;
-
-        if (deltaX > 0) {
-            leftSwipe();
-        } else {
-            rightSwipe();
-        }
-
-        isDragging = false;
-    }
+// Now you can use all slider methods like
+swiper.slideNext();
+var swiper2 = new Swiper(".swiper-2", {
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+  // autoplay: {
+  //   delay: 2500,
+  //   disableOnInteraction: false,
+  // },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 });
-
-document.querySelector('.slider').addEventListener('pointerleave', () => {
-    if (isDragging) {
-        rightSwipe();
-        isDragging = false;
-    }
-});
-
-document.querySelector('.slider').addEventListener('pointermove', (e) => {
-    if (isDragging) {
-        e.preventDefault();
-    }
-});
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
   var fx = function () {
@@ -355,125 +423,125 @@ on('click', '.option', item => {
 
 
 
-var cardIndex = 0;
-var cardWidth = document.querySelector('.card-1').offsetWidth + 20; // Include margin
-var cardsContainer = document.querySelector('#cardsContainer');
-var numCards = document.querySelectorAll('.card-1').length;
-var isDragging = false;
-var startTouchX, currentTouchX, startTranslateX;
-var autoPlayTimeout;
+// var cardIndex = 0;
+// var cardWidth = document.querySelector('.card-1').offsetWidth + 20; // Include margin
+// var cardsContainer = document.querySelector('#cardsContainer');
+// var numCards = document.querySelectorAll('.card-1').length;
+// var isDragging = false;
+// var startTouchX, currentTouchX, startTranslateX;
+// var autoPlayTimeout;
 
-document.querySelector("#prevButton").addEventListener("click", function() {
-  stopAutoPlay();
-  cardIndex = (cardIndex - 1 + numCards) % numCards; // Move from left to right
-  updateCardPosition();
-  resumeAutoPlayAfterDelay();
-});
+// document.querySelector("#prevButton").addEventListener("click", function() {
+//   stopAutoPlay();
+//   cardIndex = (cardIndex - 1 + numCards) % numCards; // Move from left to right
+//   updateCardPosition();
+//   resumeAutoPlayAfterDelay();
+// });
 
-document.querySelector("#nextButton").addEventListener("click", function() {
-  stopAutoPlay();
-  cardIndex = (cardIndex + 1) % numCards; // Move from right to left
-  updateCardPosition();
-  resumeAutoPlayAfterDelay();
-});
+// document.querySelector("#nextButton").addEventListener("click", function() {
+//   stopAutoPlay();
+//   cardIndex = (cardIndex + 1) % numCards; // Move from right to left
+//   updateCardPosition();
+//   resumeAutoPlayAfterDelay();
+// });
 
-cardsContainer.addEventListener("touchstart", function(event) {
-  startDrag(event.touches[0]);
-});
+// cardsContainer.addEventListener("touchstart", function(event) {
+//   startDrag(event.touches[0]);
+// });
 
-cardsContainer.addEventListener("touchmove", function(event) {
-  drag(event.touches[0]);
-});
+// cardsContainer.addEventListener("touchmove", function(event) {
+//   drag(event.touches[0]);
+// });
 
-cardsContainer.addEventListener("touchend", endDrag);
+// cardsContainer.addEventListener("touchend", endDrag);
 
-function startDrag(touchEvent) {
-  stopAutoPlay();
-  isDragging = true;
-  startTouchX = touchEvent.clientX || touchEvent.touches[0].clientX;
-  startTranslateX = currentTouchX || 0;
-  cardsContainer.classList.add('no-transition');
-}
+// function startDrag(touchEvent) {
+//   stopAutoPlay();
+//   isDragging = true;
+//   startTouchX = touchEvent.clientX || touchEvent.touches[0].clientX;
+//   startTranslateX = currentTouchX || 0;
+//   cardsContainer.classList.add('no-transition');
+// }
 
-function drag(touchEvent) {
-  if (!isDragging) return;
+// function drag(touchEvent) {
+//   if (!isDragging) return;
 
-  var touchX = touchEvent.clientX || touchEvent.touches[0].clientX;
-  var touchDeltaX = touchX - startTouchX;
-  currentTouchX = startTranslateX + touchDeltaX;
+//   var touchX = touchEvent.clientX || touchEvent.touches[0].clientX;
+//   var touchDeltaX = touchX - startTouchX;
+//   currentTouchX = startTranslateX + touchDeltaX;
 
-  cardsContainer.style.transform = "translateX(" + currentTouchX + "px)";
-}
+//   cardsContainer.style.transform = "translateX(" + currentTouchX + "px)";
+// }
 
-function endDrag() {
-  if (isDragging) {
-    isDragging = false;
-    var direction = currentTouchX > startTranslateX ? 1 : -1; // Reverse direction
-    var distance = Math.abs(currentTouchX - startTranslateX);
-    var threshold = cardWidth * 0.3; // Adjust threshold for more drag
+// function endDrag() {
+//   if (isDragging) {
+//     isDragging = false;
+//     var direction = currentTouchX > startTranslateX ? 1 : -1; // Reverse direction
+//     var distance = Math.abs(currentTouchX - startTranslateX);
+//     var threshold = cardWidth * 0.3; // Adjust threshold for more drag
 
-    if (distance > threshold) {
-      cardIndex = (cardIndex - direction + numCards) % numCards; // Reverse direction
-    }
+//     if (distance > threshold) {
+//       cardIndex = (cardIndex - direction + numCards) % numCards; // Reverse direction
+//     }
 
-    updateCardPosition();
-    cardsContainer.classList.remove('no-transition');
-    resumeAutoPlayAfterDelay();
-  }
-}
+//     updateCardPosition();
+//     cardsContainer.classList.remove('no-transition');
+//     resumeAutoPlayAfterDelay();
+//   }
+// }
 
-function updateCardPosition() {
-  var transformValue = -cardIndex * cardWidth + "px";
-  cardsContainer.style.transition = "transform 0.3s ease";
+// function updateCardPosition() {
+//   var transformValue = -cardIndex * cardWidth + "px";
+//   cardsContainer.style.transition = "transform 0.3s ease";
 
-  // Check if we have reached the end and adjust for looping
-  if (cardIndex >= numCards) {
-    // Move directly to the first card (seamless loop)
-    cardIndex = 0;
-    setTimeout(function() {
-      cardsContainer.style.transition = "none"; // Disable transition for the loop
-      updateCardPosition();
-    }, 300); // Slight delay for a smooth transition
-  } else {
-    cardsContainer.style.transform = "translateX(" + transformValue + ")";
-  }
-}
+//   // Check if we have reached the end and adjust for looping
+//   if (cardIndex >= numCards) {
+//     // Move directly to the first card (seamless loop)
+//     cardIndex = 0;
+//     setTimeout(function() {
+//       cardsContainer.style.transition = "none"; // Disable transition for the loop
+//       updateCardPosition();
+//     }, 300); // Slight delay for a smooth transition
+//   } else {
+//     cardsContainer.style.transform = "translateX(" + transformValue + ")";
+//   }
+// }
 
-// Auto-play functionality
-var autoPlayInterval;
+// // Auto-play functionality
+// var autoPlayInterval;
 
-function startAutoPlay() {
-  autoPlayInterval = setInterval(function() {
-    if (!isDragging) {
-      cardIndex = (cardIndex + 1) % numCards; // Move to the next card
-      updateCardPosition();
-    }
-  }, 2000); // Adjust autoplay interval as needed
-}
+// function startAutoPlay() {
+//   autoPlayInterval = setInterval(function() {
+//     if (!isDragging) {
+//       cardIndex = (cardIndex + 1) % numCards; // Move to the next card
+//       updateCardPosition();
+//     }
+//   }, 2000); // Adjust autoplay interval as needed
+// }
 
-function stopAutoPlay() {
-  clearInterval(autoPlayInterval);
-  clearTimeout(autoPlayTimeout);
-}
+// function stopAutoPlay() {
+//   clearInterval(autoPlayInterval);
+//   clearTimeout(autoPlayTimeout);
+// }
 
-function resumeAutoPlayAfterDelay() {
-  clearTimeout(autoPlayTimeout);
-  autoPlayTimeout = setTimeout(function() {
-    startAutoPlay();
-  }, 3000); // Adjust the delay before resuming auto-play as needed
-}
+// function resumeAutoPlayAfterDelay() {
+//   clearTimeout(autoPlayTimeout);
+//   autoPlayTimeout = setTimeout(function() {
+//     startAutoPlay();
+//   }, 3000); // Adjust the delay before resuming auto-play as needed
+// }
 
-// Uncomment this line to start auto-play initially
-// startAutoPlay();
+// // Uncomment this line to start auto-play initially
+// // startAutoPlay();
 
-cardsContainer.addEventListener("mouseover", stopAutoPlay);
-cardsContainer.addEventListener("mouseout", resumeAutoPlayAfterDelay);
+// cardsContainer.addEventListener("mouseover", stopAutoPlay);
+// cardsContainer.addEventListener("mouseout", resumeAutoPlayAfterDelay);
 
-// Handle window resize
-window.addEventListener("resize", function() {
-  cardWidth = document.querySelector('.card-1').offsetWidth + 20; // Include margin
-  updateCardPosition();
-});
+// // Handle window resize
+// window.addEventListener("resize", function() {
+//   cardWidth = document.querySelector('.card-1').offsetWidth + 20; // Include margin
+//   updateCardPosition();
+// });
 
 
 
