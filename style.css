@@ -903,7 +903,8 @@ ul,li{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 5% auto;
+    margin: 10% auto;
+    /* margin-bottom: 20%; */
     max-width: 1320px;
 
 }
@@ -1003,6 +1004,11 @@ ul,li{
     font-weight: 900;
 }
 
+@media (max-width:767px) {
+    .abt-content h1{
+        font-size: 2.2rem;
+    }
+}
 .abt-content h1>span {
     color: #75151b;
 }
@@ -1077,6 +1083,15 @@ ul,li{
 .service-section>h1 {
     font-size: 3rem;
     font-weight: 900;
+}
+@media (max-width:767px) {
+    .service-section>p{
+        width: 150px;
+        font-size: 16px;
+    }
+    .service-section>h1{
+        font-size: 2.2rem;
+    }
 }
 
 .tile-container {
@@ -1443,7 +1458,11 @@ ul,li{
     font-size: 3rem;
     font-weight: bolder;
 }
-
+@media (max-width:767px) {
+    .form-container h1{
+        font-size: 2.2rem;
+    }    
+}
 @media (max-width:1024px){
     .contact-card{
         width: 90%;
@@ -1775,6 +1794,10 @@ option{
     .card-inner h1 {
         font-size: 40px;
     }
+    .btn1{
+        margin-inline: auto;
+
+    }
 
 }
 
@@ -2042,6 +2065,15 @@ body{
 .testimonial-container>h1 {
     font-size: 3rem;
     font-weight: 900;
+}
+@media (max-width:767px) {
+    .testimonial-container>p{
+        width: 150px;
+        font-size: 16px;
+    }
+    .testimonial-container>h1{
+        font-size: 2.2rem;
+    }
 }
 .testimonial-item-container{
     max-width: 1320px;
