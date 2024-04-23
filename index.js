@@ -2,7 +2,7 @@ var navLinks = document.getElementById("nav-ele");
 var open_menu = document.getElementById("open-menu");
 var close_menu = document.getElementById("close-menu");
 
-console.log("hi")
+
 function openMenu(){
     // navLinks.style.right = "0px";
     navLinks.style.transform = "translateX(-50%)";
